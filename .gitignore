@@ -1,0 +1,9 @@
+*.sqlite3
+.venv
+node_modules
+
+# Ignore env files !
+.env
+
+data/
+.idea/

@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    container_name: app_portal
+    ports:
+      - "8000:8000"
+    environment:
+      - SECRET_KEY=change-moi
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

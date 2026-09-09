@@ -1,0 +1,61 @@
+.app-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 25px;
+        gap: 25px;
+        margin: 0;
+    }
+
+@media (min-width: 768px) {
+    .app-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 1024px) {
+    .app-list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (min-width: 1500px) {
+    .app-list {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+.app-card{
+    background-color: #f9fafb;
+    border: solid 1px #333333;
+    border-radius: 3px;
+    height: auto;
+    padding: 10px;
+
+    display: flex;
+    gap: 20px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    align-items: center;
+}
+
+.app-card .app-card-title {
+    font-size: 23px;
+    flex-grow: 1;
+}
+
+.app-card .app-card-actions {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.app-card .app-card-icon {
+    height: 32px;
+    width: 32px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .app-card {
+        border: none;
+        background-color: #333333;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);;
+    }
+}
