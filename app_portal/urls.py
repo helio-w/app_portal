@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('apps.urls'), name='home'),
 ]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+
+# It's OK to do that here because it's a small project that have few users ! Don't throw me into a fire for doing that lol
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
