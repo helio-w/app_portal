@@ -4,12 +4,15 @@
 <ul class="app-list">
     {% for app in apps %}
     <div class="app-card">
-        {% if app.icon %}<img class="app-card-icon" src={{app.icon.url}} alt="logo" />{% endif %}
+        {% if app.icon %}<img class="app-card-icon" src={{app.icon.url}} alt="logo" />{% else %}<div class="app-card-icon">{{ app.title|slice:1 }}</div>{% endif %}
         <div class="app-card-title">
-            <span class="app-card-name">{{ app.title }}</span>
+            <span>{{ app.title }}</span>
+        </div>
+        <div class="app-card-description">
+            <span>Aucune description</span>
         </div>
         <div class="app-card-actions">
-            <a class="button" href={{ app.url }} target="_blank">Open</a>
+            <a class="button" href={{ app.url }} target="_blank">Accéder</a>
         </div>
     </div>
     {% endfor %}
