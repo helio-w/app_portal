@@ -9,7 +9,7 @@
             <span>{{ app.title }}</span>
         </div>
         <div class="app-card-description">
-            <span>Aucune description</span>
+            <span>{% if app.description %}{{ app.description }}{% else %}Aucune description{% endif %}</span>
         </div>
         <div class="app-card-actions">
             <a class="button" href={{ app.url }} target="_blank">Accéder</a>
