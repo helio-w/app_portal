@@ -6,6 +6,8 @@ services:
       - "8000:8000"
     environment:
       - SECRET_KEY=change-moi
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=change-moi
     volumes:
       - ./data:/app/data
     restart: unless-stopped
