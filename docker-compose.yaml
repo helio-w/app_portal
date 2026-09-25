@@ -1,6 +1,8 @@
 services:
   web:
-    build: .
+    build:
+      context: .
+      target: production
     container_name: app_portal
     ports:
       - "8000:8000"
