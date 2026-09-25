@@ -1,0 +1,9 @@
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    environment:
+      - DEBUG=1
+    volumes:
+      - .:/app

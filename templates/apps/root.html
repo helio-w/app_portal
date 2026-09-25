@@ -3,7 +3,7 @@
 {% block content %}
 <ul class="app-list">
     {% for app in apps %}
-    <div class="app-card">
+    <div onclick="location.href='{{ app.url }}'" class="app-card">
         {% if app.icon %}<img class="app-card-icon" src={{app.icon.url}} alt="logo" />{% else %}<div class="app-card-icon">{{ app.title|slice:1 }}</div>{% endif %}
         <div class="app-card-title">
             <span>{{ app.title }}</span>
@@ -11,10 +11,8 @@
         <div class="app-card-description">
             <span>{% if app.description %}{{ app.description }}{% else %}Aucune description{% endif %}</span>
         </div>
-        <div class="app-card-actions">
-            <a class="button" href={{ app.url }} target="_blank">Accéder</a>
-        </div>
     </div>
+
     {% endfor %}
 </ul>
 {% endblock %}
