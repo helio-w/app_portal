@@ -10,6 +10,8 @@ RUN pip install --no-cache-dir --upgrade pip \
     && pip install  --no-cache-dir -r requirements.txt
 
 EXPOSE 8000
+
+ENTRYPOINT ["sh", "/app/scripts/entrypoints/dev-entrypoint.sh"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 FROM base AS production
@@ -26,7 +28,5 @@ COPY --chown=app:app . .
 
 EXPOSE 8000
 
-RUN chmod +x /app/entrypoint.sh
-
-ENTRYPOINT ["sh", "/app/entrypoint.sh"]
+ENTRYPOINT ["sh", "/app/scripts/entrypoints/entrypoint.sh"]
 CMD ["gunicorn", "app_portal.wsgi", "--bind", "0.0.0.0:8000"]
