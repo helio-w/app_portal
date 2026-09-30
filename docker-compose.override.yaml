@@ -5,5 +5,12 @@ services:
       target: dev
     environment:
       - DEBUG=1
+      - DJANGO_SECRET_KEY=change-moi
+      - DJANGO_SUPERUSER_USERNAME=admin
+      - DJANGO_SUPERUSER_PASSWORD=change-moi
+      - DJANGO_SETTINGS_MODULE=app_portal.settings.dev
     volumes:
       - .:/app
+      - data:/app/data
+volumes:
+  data:
