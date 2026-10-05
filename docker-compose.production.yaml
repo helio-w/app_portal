@@ -1,0 +1,11 @@
+services:
+  web:
+    build:
+      target: production
+    environment:
+      - SECRET_KEY=change-moi
+      - DJANGO_SETTINGS_MODULE=app_portal.settings.prod
+      - DJANGO_ALLOWED_HOSTS=127.0.0.1,example.org
+    volumes:
+      - data:/app/data
+

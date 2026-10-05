@@ -3,6 +3,8 @@ import os
 from django.conf.global_settings import STATICFILES_DIRS
 
 
+APP_NAME = "Portail des applications"
+
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SECRET_KEY = os.environ.get("SECRET_KEY")

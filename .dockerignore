@@ -13,4 +13,3 @@ db.sqlite3
 *.log
 data/
 .idea/
-dev-*.sh

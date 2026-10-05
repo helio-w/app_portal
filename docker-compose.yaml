@@ -2,15 +2,9 @@ services:
   web:
     build:
       context: .
-      target: production
     container_name: app_portal
     ports:
       - "8000:8000"
-    environment:
-      - SECRET_KEY=change-moi
-      - DJANGO_SETTINGS_MODULE=app_portal.settings.prod
-    volumes:
-      - data:/app/data
     restart: unless-stopped
 
 volumes:
