@@ -22,9 +22,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install  --no-cache-dir -r requirements.txt
 
-RUN useradd --create-home --uid 1000 app && chown app:app /app
-USER app
-COPY --chown=app:app . .
+COPY . .
 
 EXPOSE 8000
 
