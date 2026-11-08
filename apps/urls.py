@@ -8,6 +8,5 @@ router.register(r'applications', views.ApplicationViewSet, basename='application
 
 
 urlpatterns = [
-    path('', views.app_root, name='index'),
     path('api/', include(router.urls)),
 ]
