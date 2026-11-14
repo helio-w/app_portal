@@ -1,7 +1,7 @@
 -r requirements.txt
 
-django-stubs==6.1.0
-django-stubs-ext==6.1.0
-djangorestframework-stubs==3.18.1
-types-PyYAML==6.0.12.20260906
+django-stubs==6.1.2
+django-stubs-ext==6.1.2
+djangorestframework-stubs==3.18.2
+types-PyYAML==6.0.12.20261103
 typing_extensions==4.16.0
