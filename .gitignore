@@ -8,3 +8,4 @@ staticfiles/
 
 data/
 .idea/
+__pycache__/

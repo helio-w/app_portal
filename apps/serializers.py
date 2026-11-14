@@ -6,4 +6,5 @@ from apps.models import Application
 class ApplicationSerializer(ModelSerializer):
     class Meta:
         model = Application
-        fields = '__all__'
+        fields = ['id', 'title', 'url', 'icon', 'description', 'date_added', 'date_updated']
+        read_only_fields = ['date_added', 'date_updated']
