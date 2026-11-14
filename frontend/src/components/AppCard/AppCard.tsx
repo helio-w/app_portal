@@ -1,26 +1,34 @@
-import "./app.css"
+import { strings } from "../../strings.ts";
+import styles from "./AppCard.module.css";
 
 type AppCardProps = {
-    appTitle: string;
-    appUrl: string;
-    appDescription?: string;
-    appIconUrl?: string;
-}
+    title: string;
+    url: string;
+    description?: string;
+    iconUrl?: string;
+};
 
-export default function ({appTitle , appUrl, appDescription = "No description", appIconUrl} : AppCardProps) {
-    return(
-        <>
-            <a href={appUrl} target="_blank">
-                <div className="app-card">
-                    { appIconUrl ? <img className="app-card-icon" src={appIconUrl} alt="logo"/> : <div className="app-card-icon">{appTitle.slice(0,1)}</div>}
-                    <div className="app-card-title">
-                        <span>{appTitle}</span>
-                    </div>
-                    <div className="app-card-description">
-                        <span>{appDescription}</span>
-                    </div>
+export default function AppCard({
+    title,
+    url,
+    description = strings.appCard.noDescription,
+    iconUrl,
+}: AppCardProps) {
+    return (
+        <a href={url} target="_blank" rel="noopener noreferrer" className={styles.link}>
+            <div className={styles.card}>
+                {iconUrl ? (
+                    <img className={styles.icon} src={iconUrl} alt="" />
+                ) : (
+                    <div className={styles.icon}>{title.slice(0, 1)}</div>
+                )}
+                <div className={styles.title}>
+                    <span>{title}</span>
                 </div>
-            </a>
-        </>
-    )
+                <div className={styles.description}>
+                    <span>{description}</span>
+                </div>
+            </div>
+        </a>
+    );
 }

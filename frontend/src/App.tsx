@@ -1,15 +1,11 @@
 import Navbar from "./components/Navbar/Navbar.tsx";
-import AppCard from "./components/AppCard/AppCard.tsx";
+import AppList from "./components/AppList/AppList.tsx";
 
 export default function App() {
-
-  return (
-    <>
-      <Navbar/>
-      <ul className="app-list">
-        <AppCard appTitle={"Test"} appUrl={"#"} appDescription={""}/>
-      </ul>
-    </>
-  )
+    return (
+        <>
+            <Navbar />
+            <AppList />
+        </>
+    );
 }
-
