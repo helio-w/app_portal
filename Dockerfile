@@ -18,7 +18,7 @@ ENTRYPOINT ["sh", "/app/scripts/entrypoints/entrypoint.dev.sh"]
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # ---- Frontend build ----
-FROM node:24-slim AS frontend
+FROM node:26-slim AS frontend
 WORKDIR /frontend
 COPY frontend/package.json frontend/package-lock.json ./
 RUN npm ci
