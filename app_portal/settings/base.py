@@ -39,7 +39,7 @@ ROOT_URLCONF = 'app_portal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,7 +85,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT=  BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']
 FRONTEND_DIST = BASE_DIR / 'frontend' / 'dist'
 
 WHITENOISE_ROOT = FRONTEND_DIST
@@ -106,4 +105,9 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+REST_FRAMEWORK = {
+    # Reads are public (the portal page), writes are reserved to staff users.
+    'DEFAULT_PERMISSION_CLASSES': ['apps.permissions.IsStaffOrReadOnly'],
 }
