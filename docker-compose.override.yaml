@@ -2,9 +2,13 @@ services:
   web:
     build:
       target: dev
+    env_file:
+      - path: .env
+        required: false
     environment:
-      - DJANGO_SUPERUSER_USERNAME=admin
-      - DJANGO_SUPERUSER_PASSWORD=change-moi
+      # Dev-only defaults, override them in .env
+      - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME:-admin}
+      - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD:-change-moi}
       - DJANGO_SETTINGS_MODULE=app_portal.settings.dev
     volumes:
       - .:/app
