@@ -19,6 +19,9 @@ def spa(request):
     return FileResponse(open(index, "rb"), content_type="text/html")
 
 urlpatterns = [
+    path('api/me/', views.current_user, name='current-user'),
     path('api/', include(router.urls)),
-    re_path(r"^(?!api|/admin|/static/).*$", spa)
+    # Django strips the leading "/" before matching, so the prefixes must not include it.
+    # "(?:/|$)" also excludes "admin" without a slash, so APPEND_SLASH can redirect it to "admin/".
+    re_path(r"^(?!(?:api|admin|static|media)(?:/|$)).*$", spa)
 ]
