@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-from django.conf.global_settings import STATICFILES_DIRS
 
 
 APP_NAME = "Portail des applications"
@@ -26,6 +25,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -52,7 +52,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app_portal.wsgi.application'
-
 
 DATABASES = {
     'default': {
@@ -87,6 +86,9 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT=  BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [BASE_DIR / 'static']
+FRONTEND_DIST = BASE_DIR / 'frontend' / 'dist'
+
+WHITENOISE_ROOT = FRONTEND_DIST
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'data' / 'media'

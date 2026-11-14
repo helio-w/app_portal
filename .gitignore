@@ -4,6 +4,7 @@ node_modules
 
 # Ignore env files !
 .env
+staticfiles/
 
 data/
 .idea/
