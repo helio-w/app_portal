@@ -1,6 +1,5 @@
 from pathlib import Path
 import os
-from django.conf.global_settings import STATICFILES_DIRS
 
 
 APP_NAME = "Portail des applications"
@@ -20,11 +19,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'apps'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -38,7 +39,7 @@ ROOT_URLCONF = 'app_portal.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates'],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,7 +52,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'app_portal.wsgi.application'
-
 
 DATABASES = {
     'default': {
@@ -85,7 +85,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT=  BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+FRONTEND_DIST = BASE_DIR / 'frontend' / 'dist'
+
+WHITENOISE_ROOT = FRONTEND_DIST
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'data' / 'media'
@@ -103,4 +105,9 @@ MAILERS = {
     'default': {
         'BACKEND': 'django.core.mail.backends.console.EmailBackend',
     },
+}
+
+REST_FRAMEWORK = {
+    # Reads are public (the portal page), writes are reserved to staff users.
+    'DEFAULT_PERMISSION_CLASSES': ['apps.permissions.IsStaffOrReadOnly'],
 }
