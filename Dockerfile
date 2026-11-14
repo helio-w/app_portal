@@ -1,5 +1,5 @@
 # ---- Python base shared by dev and production ----
-FROM python:3.14-slim AS python-base
+FROM python:3.15-slim AS python-base
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PIP_NO_CACHE_DIR=1 \
