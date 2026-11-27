@@ -16,6 +16,7 @@ export default function AppList() {
                 <li key={app.id}>
                     <AppCard
                         title={app.title}
+                        featured={app.featured}
                         url={app.url}
                         description={app.description || undefined}
                         iconUrl={app.icon ?? undefined}

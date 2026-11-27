@@ -9,7 +9,7 @@ from apps.serializers import ApplicationSerializer
 
 class ApplicationViewSet(viewsets.ModelViewSet):
     # Writes are restricted to staff by DEFAULT_PERMISSION_CLASSES (settings/base.py).
-    queryset = Application.objects.order_by("title")
+    queryset = Application.objects.order_by("-featured", "title")
     serializer_class = ApplicationSerializer
 
 

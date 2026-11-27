@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 export type Application = {
     id: number;
     title: string;
+    featured: boolean;
     url: string;
     icon: string | null;
     description: string;
