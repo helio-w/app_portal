@@ -1,4 +1,4 @@
-# ---- Python base shared by dev and production ----
+# ---- Python base ----
 FROM python:3.15-slim AS python-base
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -8,14 +8,6 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
-
-# ---- Dev: source is bind-mounted by docker-compose.override.yaml ----
-FROM python-base AS dev
-COPY requirements-dev.txt .
-RUN pip install -r requirements-dev.txt
-EXPOSE 8000
-ENTRYPOINT ["sh", "/app/scripts/entrypoints/entrypoint.dev.sh"]
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
 # ---- Frontend build ----
 FROM node:25-slim AS frontend
@@ -33,7 +25,7 @@ COPY manage.py ./
 COPY app_portal/ app_portal/
 COPY apps/ apps/
 COPY --from=frontend /frontend/dist frontend/dist
-COPY scripts/entrypoints/entrypoint.prod.sh /entrypoint.sh
+COPY scripts/entrypoint.sh /entrypoint.sh
 
 # Runs as Unraid's nobody:users (99:100), the owner expected on appdata shares.
 RUN python manage.py collectstatic --noinput \
