@@ -13,5 +13,6 @@ export const strings = {
     },
     appCard: {
         noDescription: "Aucune description",
+        featured: "Mise en avant",
     },
 };

@@ -50,6 +50,26 @@ class ApplicationApiTests(TestCase):
         )
         self.assertFalse(response.json()["date_added"].startswith("2000"))
 
+    def test_featured_applications_are_listed_first(self):
+        Application.objects.create(title="Mu", url="https://mu.example", featured=True)
+        response = self.client.get(APPLICATIONS)
+        self.assertEqual(
+            [(app["title"], app["featured"]) for app in response.json()],
+            [("Mu", True), ("Alpha", False), ("Zeta", False)],
+        )
+
+    def test_applications_are_not_featured_by_default(self):
+        self.client.force_login(self.staff)
+        self.assertFalse(self.post_app().json()["featured"])
+
+    def test_staff_can_feature_an_application(self):
+        self.client.force_login(self.staff)
+        response = self.client.post(
+            APPLICATIONS, {"title": "New", "url": "https://new.example", "featured": True}
+        )
+        self.assertTrue(response.json()["featured"])
+        self.assertTrue(Application.objects.get(title="New").featured)
+
 
 class CurrentUserApiTests(TestCase):
     def test_anonymous(self):

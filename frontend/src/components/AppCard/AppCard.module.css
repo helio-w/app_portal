@@ -11,6 +11,7 @@
 }
 
 .card {
+    position: relative;
     background-color: var(--color-card-bg);
     border: var(--card-border);
     border-radius: 3px;
@@ -48,4 +49,13 @@
     text-align: center;
     align-content: center;
     font-size: xxx-large;
+}
+
+.badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+    display: flex;
+    color: var(--color-featured);
 }
